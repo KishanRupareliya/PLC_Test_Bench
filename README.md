@@ -26,13 +26,11 @@ It displays the data in a real-time interactive web dashboard using Flask and Ch
 
 1️⃣ Clone the Repository
 
-git clone https://github.com/your-repo/plc-test-bench-dashboard.git
-cd plc-test-bench-dashboard
+git clone https://github.com/KishanRupareliya/PLC_Test_Bench.git
 
 2️⃣ Install Dependencies
 
 Ensure Python is installed (Python 3.7+ required). Then, install Flask and other required libraries:
-
 pip install flask chart.js boto3 paho-mqtt
 
 3️⃣ Run the PLC Web Dashboard
@@ -84,6 +82,7 @@ Web dashboard with charts
     "system_status": "Running"
 }
 
+
 📡 AWS IoT & S3 Integration (Optional)
 
 1️⃣ Configure AWS Credentials
@@ -118,4 +117,4 @@ python plc_s3.py
 
 ✅ Upload successful: https://s3.eu-north-1.amazonaws.com/your-bucket/plc_data.json
 
-❓ Troubleshooting
+
