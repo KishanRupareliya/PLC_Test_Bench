@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLC Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>PLC Dashboard</h1>
+    <canvas id="temperatureChart"></canvas>
+    
+    <script>
+        async function fetchData() {
+            const response = await fetch("/api/data");
+            const data = await response.json();
+            return data;
+        }
+
+        async function updateChart(chart) {
+            const data = await fetchData();
+            chart.data.labels.push(new Date().toLocaleTimeString());
+            chart.data.datasets[0].data.push(data.temperature);
+            chart.update();
+        }
+
+        async function createChart() {
+            const ctx = document.getElementById("temperatureChart").getContext("2d");
+            const chart = new Chart(ctx, {
+                type: "line",
+                data: {
+                    labels: [],
+                    datasets: [{
+                        label: "Temperature (°C)",
+                        borderColor: "red",
+                        data: [],
+                        fill: false
+                    }]
+                }
+            });
+
+            setInterval(() => updateChart(chart), 3000);
+        }
+
+        createChart();
+    </script>
+</body>
+</html>
